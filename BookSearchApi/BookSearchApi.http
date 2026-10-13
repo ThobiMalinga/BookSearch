@@ -1,6 +1,23 @@
 @BookSearchApi_HostAddress = http://localhost:5087
 
-GET {{BookSearchApi_HostAddress}}/weatherforecast/
+### Search books by name (partial, case-insensitive) - 200
+GET {{BookSearchApi_HostAddress}}/api/books/search?name=clean
+Accept: application/json
+
+### Search with no matches - 404
+GET {{BookSearchApi_HostAddress}}/api/books/search?name=zzz
+Accept: application/json
+
+### Search with an empty name - 400
+GET {{BookSearchApi_HostAddress}}/api/books/search?name=
+Accept: application/json
+
+### Get book by ID - 200
+GET {{BookSearchApi_HostAddress}}/api/books/1
+Accept: application/json
+
+### Get book by an ID that doesn't exist - 404
+GET {{BookSearchApi_HostAddress}}/api/books/99
 Accept: application/json
 
 ###
